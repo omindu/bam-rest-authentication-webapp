@@ -3,23 +3,37 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-<display-name>cxf</display-name>
-
-<servlet>
-	<servlet-name>cxf</servlet-name>
 	<display-name>cxf</display-name>
-	<description>Apache CXF Endpoint</description>
-	<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
-	<load-on-startup>1</load-on-startup>
-</servlet>
 
-<servlet-mapping>
-	<servlet-name>cxf</servlet-name>
-	<url-pattern>/*</url-pattern>
-</servlet-mapping>
+	<servlet>
+		<servlet-name>cxf</servlet-name>
+		<display-name>cxf</display-name>
+		<description>Apache CXF Endpoint</description>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
-<session-config>
-	<session-timeout>60</session-timeout>
-</session-config>
+	<servlet-mapping>
+		<servlet-name>cxf</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+
+	<security-constraint>
+
+		<web-resource-collection>
+			<web-resource-name>Entire Application</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+
+	</security-constraint>
+
 
 </web-app>
